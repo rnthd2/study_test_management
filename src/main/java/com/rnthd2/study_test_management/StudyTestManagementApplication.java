@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StudyTestManagementApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(StudyTestManagementApplication.class, args);
 	}
 

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 public class Note {
-    private Long id;
+    private long id;
     private LocalDate studyTime;
 
     public Note() {

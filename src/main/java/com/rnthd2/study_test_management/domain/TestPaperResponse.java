@@ -8,23 +8,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-public class TestPaper {
+public class TestPaperResponse {
     private long id;
-    private List<Test> tests;
     private int count;
-    private LocalDateTime testTime;
+    private List<Test> tests;
     private int score;
 
     // Builder 이름을 부여해서 그에 따른 책임 부여, 그에 따른 필수 인자값 명확
-    @Builder(builderClassName = "ByWriteTestPaperBuilder", builderMethodName = "ByWriteTestPaperBuilder")
-    public TestPaper(Long id, List<Test> tests, LocalDateTime testTime, int score) {
+    @Builder(builderClassName = "ByTestPaperResponseBuilder", builderMethodName = "ByTestPaperResponseBuilder")
+    public TestPaperResponse(Long id, List<Test> tests, int score) {
         Assert.notNull(id,"id is not null");
         Assert.notNull(tests,"tests is not null");
-        Assert.notNull(testTime,"testTime is not null");
         this.id = id;
-        this.tests = tests;
         this.count = tests.size();
-        this.testTime = testTime;
+        this.tests = tests;
         this.score = score;
     }
+
 }

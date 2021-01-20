@@ -1,6 +1,8 @@
 package com.rnthd2.study_test_management.service;
 
 import com.rnthd2.study_test_management.domain.EnglishNote;
+import com.rnthd2.study_test_management.domain.TestPaper;
+import com.rnthd2.study_test_management.domain.TestPaperResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +23,7 @@ class EnglishServiceTest {
     EnglishService englishService;
 
     @Test
-    public void 영어시험지_가져오기() throws Exception {
+    public void 영어노트_가져오기() throws Exception {
         //given
 
         //when
@@ -30,5 +32,17 @@ class EnglishServiceTest {
         //then
         Assertions.assertThat(englishTests);
     }
+
+    @Test
+    public void 영어시험지_가져오기() throws Exception {
+        //given
+
+        //when
+        TestPaperResponse englishTestPaper = englishService.findTestPaperBlankOriginal();
+
+        //then
+        Assertions.assertThat(englishTestPaper);
+    }
+
 
 }
