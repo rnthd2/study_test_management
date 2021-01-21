@@ -23,4 +23,9 @@ public class EnglishNote extends Note {
         this.translate = translate;
         this.explanation = explanation;
     }
+
+    @Override
+    String getQuestion(String question) {
+        return null;
+    }
 }

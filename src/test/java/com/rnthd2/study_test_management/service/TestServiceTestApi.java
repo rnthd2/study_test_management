@@ -1,7 +1,6 @@
 package com.rnthd2.study_test_management.service;
 
 import com.rnthd2.study_test_management.domain.EnglishNote;
-import com.rnthd2.study_test_management.domain.TestPaper;
 import com.rnthd2.study_test_management.domain.TestPaperResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,17 +16,17 @@ import java.util.List;
 @SpringBootTest
 //@Transactional
 @Rollback(value = false)
-class EnglishServiceTest {
+class TestServiceTestApi {
 
     @Autowired
-    EnglishService englishService;
+    TestApiService testApiService;
 
     @Test
     public void 영어노트_가져오기() throws Exception {
         //given
 
         //when
-        List<EnglishNote> englishTests = englishService.findEngNote();
+        List<EnglishNote> englishTests = testApiService.findEnglishNote();
 
         //then
         Assertions.assertThat(englishTests);
@@ -38,7 +37,7 @@ class EnglishServiceTest {
         //given
 
         //when
-        TestPaperResponse englishTestPaper = englishService.findTestPaperBlankOriginal();
+        TestPaperResponse englishTestPaper = testApiService.findTestPaperBlankOriginal();
 
         //then
         Assertions.assertThat(englishTestPaper);

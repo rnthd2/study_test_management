@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 import java.time.LocalDate;
 
 @Getter
-public class Note {
+public abstract class Note{
     private long id;
     private LocalDate studyTime;
 
@@ -23,4 +23,5 @@ public class Note {
         this.studyTime = studyTime;
     }
 
+    abstract String getQuestion(String question);
 }

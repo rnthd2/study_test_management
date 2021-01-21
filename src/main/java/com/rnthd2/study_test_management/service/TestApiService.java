@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @Service
-public class EnglishService {
+public class TestApiService {
     //todo class로 따로 관리
     final String ENG_FILE_PATH_V1 = "file/english.xlsx";
 
@@ -47,7 +47,7 @@ public class EnglishService {
      *
      * @return
      */
-    public List<EnglishNote> findEngNote() {
+    public List<EnglishNote> findEnglishNote() {
         try {
             Workbook workbook = getFile(ENG_FILE_PATH_V1);
             //1번 시트 가져오기
@@ -98,14 +98,16 @@ public class EnglishService {
         return englishNote;
     }
 
-    public TestPaperResponse findTestPaperBlankOriginal() {
+    public TestPaperResponse findTestPaperBlankOriginal(List<? extends Note> list) {
         List<Test> tests = new ArrayList<>();
-        List<EnglishNote> note = findEngNote();
-        Collections.shuffle(note);
-        note.forEach(row -> {
+        Collections.shuffle(list);
+        list.forEach(row -> {
+
             Test test = Test.ByWriteTestBuilder()
                     .id(row.getId())
-                    .question(row.getTranslate()).build();
+                    //todo 어떤걸 질문으로 만들건지 선택할 수 있는 프로세서 필요
+//                    .question(row.getQuestion())
+                    .build();
             tests.add(test);
         });
 
