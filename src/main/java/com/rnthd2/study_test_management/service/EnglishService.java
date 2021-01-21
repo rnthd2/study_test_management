@@ -1,9 +1,6 @@
 package com.rnthd2.study_test_management.service;
 
-import com.rnthd2.study_test_management.domain.EnglishNote;
-import com.rnthd2.study_test_management.domain.Test;
-import com.rnthd2.study_test_management.domain.TestPaper;
-import com.rnthd2.study_test_management.domain.TestPaperResponse;
+import com.rnthd2.study_test_management.domain.*;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
@@ -23,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
 @Service
 public class EnglishService {
@@ -33,6 +31,13 @@ public class EnglishService {
 
     private void setResourceAsStream(String path) {
         is = this.getClass().getClassLoader().getResourceAsStream(path);
+    }
+
+    public NoteBookResponse noteBookResponse(List<? extends Note> list){
+        return NoteBookResponse.ByReadEnglishNoteResponseBuilder()
+                .id(1L)
+                .list(list)
+                .build();
     }
 
     /**
@@ -57,7 +62,6 @@ public class EnglishService {
                 list.add(englishNote);
             }
             return list;
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

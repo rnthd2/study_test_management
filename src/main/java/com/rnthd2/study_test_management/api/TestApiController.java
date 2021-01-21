@@ -1,7 +1,7 @@
 package com.rnthd2.study_test_management.api;
 
 import com.rnthd2.study_test_management.domain.EnglishNote;
-import com.rnthd2.study_test_management.domain.TestPaper;
+import com.rnthd2.study_test_management.domain.NoteBookResponse;
 import com.rnthd2.study_test_management.domain.TestPaperResponse;
 import com.rnthd2.study_test_management.service.EnglishService;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +16,10 @@ import java.util.List;
 public class TestApiController {
     private final EnglishService englishService;
 
-    //todo 반환형 새로 작성 필요
     @GetMapping("/api/v1/note/eng")
-    public List<EnglishNote> getEnglishNoteV1(){
-        return englishService.findEngNote();
+    public NoteBookResponse getEnglishNoteV1(){
+        List<EnglishNote> notes = englishService.findEngNote();
+        return englishService.noteBookResponse(notes);
     }
 
     @GetMapping("/api/v1/test/eng/blank/original")
