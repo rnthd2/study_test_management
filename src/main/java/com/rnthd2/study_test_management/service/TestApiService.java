@@ -98,19 +98,9 @@ public class TestApiService {
         return englishNote;
     }
 
-    public TestPaperResponse findTestPaperBlankOriginal(List<? extends Note> list) {
-        List<Test> tests = new ArrayList<>();
-        Collections.shuffle(list);
-        list.forEach(row -> {
 
-            Test test = Test.ByWriteTestBuilder()
-                    .id(row.getId())
-                    //todo 어떤걸 질문으로 만들건지 선택할 수 있는 프로세서 필요
-//                    .question(row.getQuestion())
-                    .build();
-            tests.add(test);
-        });
 
+    public TestPaperResponse testPaperResponse(List<Test> tests) {
         //todo id 저장용 db 필요...
         TestPaper testPaper = TestPaper.ByWriteTestPaperBuilder()
                 .id(1L)

@@ -26,7 +26,7 @@ class TestServiceTestApi {
         //given
 
         //when
-        List<EnglishNote> englishTests = testApiService.findEnglishNote();
+        final List<EnglishNote> englishTests = testApiService.findEnglishNote();
 
         //then
         Assertions.assertThat(englishTests);
@@ -37,7 +37,9 @@ class TestServiceTestApi {
         //given
 
         //when
-        TestPaperResponse englishTestPaper = testApiService.findTestPaperBlankOriginal();
+        List<EnglishNote> notes = testApiService.findEnglishNote();
+        notes.forEach(note -> note.setQuestion(note.getOriginal()));
+        final TestPaperResponse englishTestPaper = testApiService.convertNoteToTestPaper(notes);
 
         //then
         Assertions.assertThat(englishTestPaper);
